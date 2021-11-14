@@ -1,16 +1,63 @@
 import React from "react";
+import CurRateAPI from "../CurRateAPI/CurRateAPI";
 import './style.css';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            interval: 0,
+            apiKey : '',
+            interval: (1000 * 60 * 5),
             baseCurrency: 'usd',         //базовая валюта
         }
 
+        // написать класс работы с сетью и перед
+        // конвертакцией запросить курс в this.componentDidMount()
+
         this.selectInterval = this.selectInterval.bind(this);
         this.baseCurrency = this.baseCurrency.bind(this);
+        this.handlerInputLengthValidation = this.handlerInputLengthValidation.bind(this);
+    }
+
+    componentDidMount() {
+        const cur = new CurRateAPI();
+        cur.getApiKey();
+    }
+
+    validation(number) {
+
+        if (number.length > 15) {
+            alert('Не более 15 цифр');
+            return number.substring(0, 15);
+        }
+
+        if (number === ''){
+            return '';
+        }
+
+        if (parseFloat(number) || parseInt(number)){
+            if (number.match('[A-Za-z]+$') !== null){
+                const index = number.match('[A-Za-z]+$')['index'];
+                alert('В числах есть буквы ?')
+                return number.substring(0,index);
+                // не работает с русским алфавитом
+            }
+
+            return number;
+        } else {
+            alert('Введите корректное значение');
+            return '';
+        }
+    }
+
+    handlerInputLengthValidation(e) {
+        e.target.value = this.validation(e.target.value);
+        e.preventDefault();
+    }
+
+    // минуты в милисекунды для interval
+    convertMinToMilisec(min) {
+        return 60000 * min;
     }
 
     //выбор интервала
@@ -26,6 +73,9 @@ export default class App extends React.Component {
     }
 
     render() {
+        // let i = 0;
+        // setInterval(()=> console.log(++i),500);
+
         return (
             <div className='container custom-container'>
                 <form>
@@ -49,7 +99,7 @@ export default class App extends React.Component {
                         </select>
                     </div>
                 </form>
-                <input type="text" placeholder='max 15 цифр'/>
+                <input onChange={this.handlerInputLengthValidation} type="text" placeholder='max 15 цифр'/>
             </div>
         )
     }
