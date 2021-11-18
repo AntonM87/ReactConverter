@@ -2,26 +2,24 @@ import React from "react";
 import CurRateAPI from "../CurRateAPI/CurRateAPI";
 import './style.css';
 
+//https://currencylayer.com/
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            apiKey : '',
-            interval: (1000 * 60 * 5),
-            baseCurrency: 'usd',         //базовая валюта
+            USDRUB: '',
+            input: '',
         }
 
-        // написать класс работы с сетью и перед
-        // конвертакцией запросить курс в this.componentDidMount()
-
-        this.selectInterval = this.selectInterval.bind(this);
-        this.baseCurrency = this.baseCurrency.bind(this);
         this.handlerInputLengthValidation = this.handlerInputLengthValidation.bind(this);
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const cur = new CurRateAPI();
-        cur.getApiKey();
+        this.setState({
+            USDRUB: await cur.getUSDRUBcurrency()
+        })
     }
 
     validation(number) {
@@ -31,15 +29,15 @@ export default class App extends React.Component {
             return number.substring(0, 15);
         }
 
-        if (number === ''){
+        if (number === '') {
             return '';
         }
 
-        if (parseFloat(number) || parseInt(number)){
-            if (number.match('[A-Za-z]+$') !== null){
+        if (parseFloat(number) || parseInt(number)) {
+            if (number.match('[A-Za-z]+$') !== null) {
                 const index = number.match('[A-Za-z]+$')['index'];
                 alert('В числах есть буквы ?')
-                return number.substring(0,index);
+                return number.substring(0, index);
                 // не работает с русским алфавитом
             }
 
@@ -50,56 +48,27 @@ export default class App extends React.Component {
         }
     }
 
+    stateInput(inputValue) {
+        this.setState({input: inputValue});
+    }
+
     handlerInputLengthValidation(e) {
         e.target.value = this.validation(e.target.value);
-        e.preventDefault();
-    }
-
-    // минуты в милисекунды для interval
-    convertMinToMilisec(min) {
-        return 60000 * min;
-    }
-
-    //выбор интервала
-    selectInterval(e) {
-        this.setState({interval: e.target.value});
-        e.preventDefault();
-    }
-
-    //базовая валюта
-    baseCurrency(e) {
-        this.setState({})
+        this.setState({input: e.target.value});
         e.preventDefault();
     }
 
     render() {
-        // let i = 0;
-        // setInterval(()=> console.log(++i),500);
+
+        const {USDRUB: cur, input} = this.state;
+
+        console.log(cur, input)
 
         return (
             <div className='container custom-container'>
-                <form>
-                    <div className="form-group">
-                        <label>Интервал обновления в минутах</label>
-                        <select onChange={this.selectInterval} className="form-control" id="exampleFormControlSelect1">
-                            <option selected value='1'>1 мин.</option>
-                            <option value='5'>5 мин.</option>
-                            <option value='15'>15 мин.</option>
-                            <option value='30'>30 мин.</option>
-                            <option value='60'>60 мин.</option>
-                        </select>
-                    </div>
-                </form>
-                <form>
-                    <div className="form-group">
-                        <label>Базовая валюта</label>
-                        <select onChange={this.baseCurrency} className="form-control" id="exampleFormControlSelect1">
-                            <option selected value='rub'>RUB</option>
-                            <option value='usd'>USD</option>
-                        </select>
-                    </div>
-                </form>
+                <div>Конвертировать доллары в рубли</div>
                 <input onChange={this.handlerInputLengthValidation} type="text" placeholder='max 15 цифр'/>
+                <div>Результат: {(cur * input).toFixed(1)}</div>
             </div>
         )
     }

@@ -1,11 +1,18 @@
+import axios from "axios";
+
 export default class CurRateAPI {
     constructor() {
-        this.apiKey = '7d43712903c7dd39422fdac079c39994';
-        this.apiKeyString = 'https://currate.ru/api/?get=currency_list&key=YOUR-API-KEY';
+        this.baseRequestString = 'http://api.currencylayer.com/live?access_key=25786ffae4aa0b747da8052d92b9d76f&format=1';
     }
-    getApiKey(){
-        fetch(this.apiKey).then(
-            (data)=>console.log(data)
-        )
+
+    async getUSDRUBcurrency() {
+        let currency = '';
+        await axios.get(this.baseRequestString)
+            .then(data => {
+                if (data.status === 200) {
+                    currency = data.data.quotes['USDRUB'];
+                }
+            });
+        return currency;
     }
 }
