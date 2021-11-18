@@ -1,5 +1,15 @@
 import React from "react";
 import CurRateAPI from "../CurRateAPI/CurRateAPI";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Routes,
+} from 'react-router-dom';
+import Converter from "../Converter/Converter";
+import Rates from '../pages/Rates';
+import NotFoundPage from '../pages/NotFoundPage'
 import './style.css';
 
 //https://currencylayer.com/
@@ -59,16 +69,20 @@ export default class App extends React.Component {
     }
 
     render() {
-
         const {USDRUB: cur, input} = this.state;
-
-        console.log(cur, input)
-
         return (
-            <div className='container custom-container'>
-                <div>Конвертировать доллары в рубли</div>
-                <input onChange={this.handlerInputLengthValidation} type="text" placeholder='max 15 цифр'/>
-                <div>Результат: {(cur * input).toFixed(1)}</div>
+            <div>
+                <Routes>
+                    <Route path='/' element={
+                        <Converter
+                            handlerInputLengthValidation={this.handlerInputLengthValidation}
+                            cur={cur}
+                            input={input}
+                        />
+                    }/>
+                    <Route path='/rates' element={<Rates userValue={input}/>}>Далее</Route>
+                    <Route path='*' element={<NotFoundPage/>}/>
+                </Routes>
             </div>
         )
     }
