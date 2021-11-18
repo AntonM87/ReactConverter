@@ -80,7 +80,7 @@ export default class App extends React.Component {
                             input={input}
                         />
                     }/>
-                    <Route path='/rates' element={<Rates userValue={input}/>}>Далее</Route>
+                    <Route path='/rates' element={<Rates/>}>Далее</Route>
                     <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
             </div>
