@@ -8,11 +8,13 @@ import {
     Routes,
 } from 'react-router-dom';
 import Converter from "../Converter/Converter";
-import Rates from '../pages/Rates';
+import Rates from '../pages/RatesPage';
 import NotFoundPage from '../pages/NotFoundPage'
 import './style.css';
 
 //https://currencylayer.com/
+
+const mainCurrency = 'USDRUB';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -28,9 +30,14 @@ export default class App extends React.Component {
     async componentDidMount() {
         const cur = new CurRateAPI();
         this.setState({
-            USDRUB: await cur.getUSDRUBcurrency()
+            USDRUB: await cur.getUSDRUBcurrency(),
+            // input: localStorage.getItem(mainCurrency),
         })
     }
+
+    // componentWillUnmount() {
+    //     localStorage.setItem(mainCurrency,this.state.input);
+    // }
 
     validation(number) {
 
@@ -50,7 +57,6 @@ export default class App extends React.Component {
                 return number.substring(0, index);
                 // не работает с русским алфавитом
             }
-
             return number;
         } else {
             alert('Введите корректное значение');
@@ -69,6 +75,9 @@ export default class App extends React.Component {
     }
 
     render() {
+
+        // console.log(localStorage);
+
         const {USDRUB: cur, input} = this.state;
         return (
             <div>
@@ -80,7 +89,7 @@ export default class App extends React.Component {
                             input={input}
                         />
                     }/>
-                    <Route path='/rates' element={<Rates/>}>Далее</Route>
+                    <Route path='/RatesPage' element={<Rates/>}>Далее</Route>
                     <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
             </div>
