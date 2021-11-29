@@ -49,7 +49,6 @@ export default class RatesPage extends React.Component {
 
     render() {
 
-
         this.getCurrencyArr()
         console.log('this.currencyArr', this.currencyArr);
         return (

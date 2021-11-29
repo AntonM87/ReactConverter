@@ -10,7 +10,7 @@ import {
 import Converter from "../Converter/Converter";
 import Rates from '../pages/RatesPage';
 import NotFoundPage from '../pages/NotFoundPage'
-import './style.css';
+import './styles.css';
 
 //https://currencylayer.com/
 

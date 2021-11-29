@@ -1,16 +1,9 @@
 export default function ListItem(props) {
     return (
-        <div>
-            <li style={{
-                listStyle : 'none'
+        <li style={{
             }}>
-                <p style={{
-                    display: 'inline-block'
-                }}>{props.name} :</p>
-                <p style={{
-                    display: 'inline-block'
-                }}>{props.value.toFixed(1)}</p>
-            </li>
-        </div>
+                <p>{props.name} :</p>
+                <p>{props.value.toFixed(1)}</p>
+        </li>
     )
 }
