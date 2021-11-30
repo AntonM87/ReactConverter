@@ -1,14 +1,369 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', serif;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+    background: #e5e5e5;
+}
+
+#root {
+    box-sizing: border-box;
+    background: white;
+    margin: auto;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.err404 h1, .err404 h3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.custom-container {
+    height: auto;
+}
+
+.current-rate {
+    font-weight: 700;
+}
+
+input {
+    padding: 5px 0 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.result {
+    margin-bottom: 15px;
+}
+
+a {
+    transition: all .2s linear;
+    font-weight: 700;
+    background: #18A0FB;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+a:hover {
+    color: white;
+    opacity: .5;
+}
+
+select {
+    padding: 5px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+ul {
+    margin-bottom: 15px;
+}
+
+.row {
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+ul {
+    padding-left: 0;
+}
+
+ul li {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    list-style: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+ul li p {
+    display: inline-block;
+}
+
+ul li p:first-child {
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.logo {
+    margin-bottom: 25px;
+}
+
+
+.input-container i {
+    /*transform: rotate(90deg);*/
+    transition: all .2s linear;
+    cursor: pointer;
+}
+
+.input-container i:hover {
+    transform: scale(1.2);
+    opacity: .6;
+}
+
+/* xl (>=1200) */
+@media (min-width: 1200px) {
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .input-container i {
+        font-size: 25px;
+        margin-top: 5px;
+    }
+
+    input {
+        width: 45%;
+    }
+
+    body {
+        padding: 5%;
+    }
+
+    .logo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #root {
+        margin-top: 1%;
+        display: block;
+        padding: 1%;
+        max-width: 45%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .rates-page-link {
+        margin-bottom: 20px;
+    }
+
+    .rate {
+        margin: 3%;
+    }
+
+    .err404 {
+        margin: 3%;
+    }
+}
+
+/* lg (>=992 и <=1199) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .input-container i {
+        font-size: 25px;
+        margin-top: 5px;
+    }
+
+    input {
+        width: 45%;
+    }
+
+    body {
+        padding: 5%;
+    }
+
+    .logo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #root {
+        margin-top: 1%;
+        display: block;
+        padding: 1%;
+        max-width: 65%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .rates-page-link {
+        margin-bottom: 20px;
+    }
+
+    .rate {
+        margin: 3%;
+    }
+
+    .err404 {
+        margin: 3%;
+    }
+}
+
+/* md (>=768 и <=991) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .input-container i {
+        font-size: 20px;
+        margin-top: 7px;
+    }
+    input {
+        width: 45%;
+    }
+
+    body {
+        padding: 5%;
+    }
+
+    .logo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #root {
+        margin-top: 1%;
+        display: block;
+        padding: 1%;
+        max-width: 65%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .rates-page-link {
+        margin-bottom: 20px;
+    }
+
+    .rate {
+        margin: 3%;
+    }
+
+    .err404 {
+        margin: 3%;
+    }
+}
+
+/* sm (>=576 и <=767) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .input-container i {
+        font-size: 20px;
+        margin-top: 7px;
+    }
+    input {
+        width: 45%;
+    }
+
+    body {
+        padding: 5%;
+    }
+
+    .logo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #root {
+        margin-top: 1%;
+        display: block;
+        padding: 1%;
+        max-width: 85%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .rates-page-link {
+        margin-bottom: 20px;
+    }
+
+    .rate {
+        margin: 3%;
+    }
+
+    .err404 {
+        margin: 3%;
+    }
+}
+
+@media (max-width: 575px) {
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .input-container i {
+        font-size: 18px;
+        margin-top: -5px;
+        margin-bottom: 10px;
+        transform: rotate(90deg);
+    }
+    .input-container i:hover{
+        transform: rotate(90deg);
+    }
+    input {
+        width: 100%;
+    }
+
+    body {
+        padding: 3%;
+    }
+
+    .logo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #root {
+        margin-top: 1%;
+        display: block;
+        padding: 1%;
+        max-width: 95%;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .rates-page-link {
+        margin-bottom: 20px;
+    }
+
+    .rate {
+        margin: 3%;
+    }
+
+    .err404 {
+        margin: 3%;
+    }
+}
+
 
