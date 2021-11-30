@@ -2,8 +2,7 @@ import axios from "axios";
 
 export default class CurRateAPI {
     constructor() {
-        // this.baseRequestString = 'http://api.currencylayer.com/live?access_key=25786ffae4aa0b747da8052d92b9d76f&format=1';
-        this.USDquerySting = 'http://apilayer.net/api/live?access_key=25786ffae4aa0b747da8052d92b9d76f&currencies=RUB&source=USD&format=1';
+        this.USDquerySting = 'http://apilayer.net/api/live?access_key=7ef3a3b4cf0bb3cb761bfdcc278247b1&currencies=RUB&source=USD&format=1';
     }
 
     async getSelectedCurrency(currency) {
@@ -22,7 +21,7 @@ export default class CurRateAPI {
     }
 
     getRequestString(selectedCurrency) {
-        return `http://apilayer.net/api/live?access_key=25786ffae4aa0b747da8052d92b9d76f&currencies=EUR,GBP,CAD,PLN,RUB&source=${selectedCurrency}&format=1`
+        return `http://apilayer.net/api/live?access_key=7ef3a3b4cf0bb3cb761bfdcc278247b1&currencies=EUR,GBP,CAD,PLN,RUB&source=${selectedCurrency}&format=1`
     }
 
     async getUSDRUBcurrency() {
@@ -30,6 +29,7 @@ export default class CurRateAPI {
         await axios.get(this.USDquerySting)
             .then(data => {
                 if (data.status === 200) {
+                    // console.log(data.data.quotes.USDRUB);
                     currency = data.data.quotes.USDRUB;
                 }
             });

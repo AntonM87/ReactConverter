@@ -19,6 +19,9 @@ export default class Converter extends React.Component {
         const USD = document.querySelector('input[name=usd]');
         const RUB = document.querySelector('input[name=rub]');
 
+        // console.log(USD)
+        // console.log(RUB)
+
         if (e.target.name === 'usd') {
             RUB.value = (this.currency * value).toFixed(1);
         }
@@ -31,7 +34,7 @@ export default class Converter extends React.Component {
         return (
             <div className='container custom-container'>
                 <div className='logo'>Конвертировать доллары в рубли</div>
-                <p className='current-rate'>Текущий курс рубля к доллару {(+this.currency).toFixed(1)}</p>
+                <p className='current-rate'>Текущий курс рубля к доллару {(+this.props.cur).toFixed(1)}</p>
                 <div className='input-container'>
                     <input onChange={this.getResult} name='usd' type="number"
                            placeholder='USD'/>
