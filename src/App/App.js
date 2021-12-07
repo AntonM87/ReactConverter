@@ -55,6 +55,7 @@ export default class App extends React.Component {
 
     render() {
         const {USDRUB: cur,} = this.state;
+        
         return (
             <div>
                 <Routes>

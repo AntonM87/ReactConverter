@@ -110,13 +110,17 @@ ul li p:first-child {
         align-items: stretch;
     }
 
+    .input-container label{
+        width: 40%;
+    }
+
     .input-container i {
         font-size: 25px;
         margin-top: 5px;
     }
 
     input {
-        width: 45%;
+        width: 90%;
     }
 
     body {

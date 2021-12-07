@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Converter extends React.Component {
 
@@ -9,24 +9,39 @@ export default class Converter extends React.Component {
         this.state = {
             result: '',
         }
+
+        this.USDref = React.createRef();
+        this.RUBref = React.createRef();
+
         this.getResult = this.getResult.bind(this);
     }
 
     getResult(e) {
         let value = e.target.value;
-        if (value.length === 0) return '';
+        const name = e.target.name;
 
-        const USD = document.querySelector('input[name=usd]');
-        const RUB = document.querySelector('input[name=rub]');
+        const USDref = this.USDref.current;
+        const RUBref = this.RUBref.current;
 
-        // console.log(USD)
-        // console.log(RUB)
+        if (value.length === 0) {
+            USDref.value = 'Empty';
+            RUBref.value = 'Empty';
+            return;
+        };
 
-        if (e.target.name === 'usd') {
-            RUB.value = (this.currency * value).toFixed(1);
+        if (value < 0) {
+            USDref.value = 'Empty';
+            RUBref.value = 'Empty';
+            return;
         }
-        if (e.target.name === 'rub') {
-            USD.value = (value / this.currency).toFixed(1);
+
+        if (name === 'usd') {
+            RUBref.value = (this.currency * value).toFixed(1);
+            return;
+        }
+        if (name === 'rub') {
+            USDref.value = (value / this.currency).toFixed(1);
+            return;
         }
     }
 
@@ -36,13 +51,19 @@ export default class Converter extends React.Component {
                 <div className='logo'>Конвертировать доллары в рубли</div>
                 <p className='current-rate'>Текущий курс рубля к доллару {(+this.props.cur).toFixed(1)}</p>
                 <div className='input-container'>
-                    <input onChange={this.getResult} name='usd' type="number"
-                           placeholder='USD'/>
-                    <i className="fas fa-exchange-alt"/>
-                    <input onChange={this.getResult} name="rub" type='number'
-                           placeholder='RUB'/>
+                    <label>
+                        <i class="fas fa-dollar-sign"></i>
+                        <input ref={this.USDref} onChange={this.getResult} name='usd' type="number"
+                            placeholder='USD' />
+                    </label>
+                    <i className="fas fa-exchange-alt" />
+                    <label>
+                        <i class="fas fa-ruble-sign"></i>
+                        <input ref={this.RUBref} onChange={this.getResult} name="rub" type='number'
+                            placeholder='RUB' />
+                    </label>
                 </div>
-                <div className='rates-page-link'><Link to='/RatesPAge'>Далее</Link></div>
+                <div className='rates-page-link'><Link to='/RatesPAge'>Курсы валют</Link></div>
             </div>
         )
     }
