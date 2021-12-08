@@ -28,34 +28,8 @@ export default class App extends React.Component {
         })
     }
 
-    // validation(number) {
-    //
-    //     if (number.length > 15) {
-    //         alert('Не более 15 цифр');
-    //         return number.substring(0, 15);
-    //     }
-    //
-    //     if (number === '') {
-    //         return '';
-    //     }
-    //
-    //     if (parseFloat(number) || parseInt(number)) {
-    //         if (number.match('[A-Za-z]+$') !== null) {
-    //             const index = number.match('[A-Za-z]+$')['index'];
-    //             alert('В числах есть буквы ?')
-    //             return number.substring(0, index);
-    //             // не работает с русским алфавитом
-    //         }
-    //         return number;
-    //     } else {
-    //         alert('Введите корректное значение');
-    //         return '';
-    //     }
-    // }
-
     render() {
         const {USDRUB: cur,} = this.state;
-        
         return (
             <div>
                 <Routes>

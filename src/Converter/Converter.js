@@ -6,10 +6,7 @@ export default class Converter extends React.Component {
     constructor(props) {
         super(props);
         this.currency = this.props.cur;
-        this.state = {
-            result: '',
-        }
-
+        
         this.USDref = React.createRef();
         this.RUBref = React.createRef();
 
