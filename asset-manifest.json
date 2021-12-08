@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/AntonM87/.github.io/static/css/main.06cc2e97.chunk.css",
-    "main.js": "/AntonM87/.github.io/static/js/main.87440080.chunk.js",
-    "main.js.map": "/AntonM87/.github.io/static/js/main.87440080.chunk.js.map",
-    "runtime-main.js": "/AntonM87/.github.io/static/js/runtime-main.a71a9b64.js",
-    "runtime-main.js.map": "/AntonM87/.github.io/static/js/runtime-main.a71a9b64.js.map",
-    "static/js/2.17c4941b.chunk.js": "/AntonM87/.github.io/static/js/2.17c4941b.chunk.js",
-    "static/js/2.17c4941b.chunk.js.map": "/AntonM87/.github.io/static/js/2.17c4941b.chunk.js.map",
-    "static/js/3.793c9596.chunk.js": "/AntonM87/.github.io/static/js/3.793c9596.chunk.js",
-    "static/js/3.793c9596.chunk.js.map": "/AntonM87/.github.io/static/js/3.793c9596.chunk.js.map",
-    "index.html": "/AntonM87/.github.io/index.html",
-    "static/css/main.06cc2e97.chunk.css.map": "/AntonM87/.github.io/static/css/main.06cc2e97.chunk.css.map",
-    "static/js/2.17c4941b.chunk.js.LICENSE.txt": "/AntonM87/.github.io/static/js/2.17c4941b.chunk.js.LICENSE.txt"
+    "main.css": "/ReactConverter/static/css/main.06cc2e97.chunk.css",
+    "main.js": "/ReactConverter/static/js/main.50dda5f8.chunk.js",
+    "main.js.map": "/ReactConverter/static/js/main.50dda5f8.chunk.js.map",
+    "runtime-main.js": "/ReactConverter/static/js/runtime-main.07e615c8.js",
+    "runtime-main.js.map": "/ReactConverter/static/js/runtime-main.07e615c8.js.map",
+    "static/js/2.17c4941b.chunk.js": "/ReactConverter/static/js/2.17c4941b.chunk.js",
+    "static/js/2.17c4941b.chunk.js.map": "/ReactConverter/static/js/2.17c4941b.chunk.js.map",
+    "static/js/3.793c9596.chunk.js": "/ReactConverter/static/js/3.793c9596.chunk.js",
+    "static/js/3.793c9596.chunk.js.map": "/ReactConverter/static/js/3.793c9596.chunk.js.map",
+    "index.html": "/ReactConverter/index.html",
+    "static/css/main.06cc2e97.chunk.css.map": "/ReactConverter/static/css/main.06cc2e97.chunk.css.map",
+    "static/js/2.17c4941b.chunk.js.LICENSE.txt": "/ReactConverter/static/js/2.17c4941b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a71a9b64.js",
+    "static/js/runtime-main.07e615c8.js",
     "static/js/2.17c4941b.chunk.js",
     "static/css/main.06cc2e97.chunk.css",
-    "static/js/main.87440080.chunk.js"
+    "static/js/main.50dda5f8.chunk.js"
   ]
 }
